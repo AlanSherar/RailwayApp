@@ -59,7 +59,7 @@ export function getInfo(req, res) {
   const pid = process.pid
   const carpProyectoArray = pathExec.replace(/\\/g, '/').split("/")
   const carpProyecto = carpProyectoArray[carpProyectoArray.length-1]
-  const port = DOT_ENV.PORT
+  const port = process.env.PORT || DOT_ENV.PORT
   const mode = DOT_ENV.MODE
 
 

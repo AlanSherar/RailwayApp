@@ -1,12 +1,11 @@
 import Mensajes from "./public/contenedores/mongohijos/Mensajes.js"
 import Usuarios from "./public/contenedores/mongohijos/Usuarios.js"
+import Productos from "./public/contenedores/mongohijos/Productos.js"
 import * as routes from "./public/src/routes.js"
 import bCrypt from "bcrypt"
-import {DBCliente} from "./public/contenedores/ContenedorSQL.js"
 import express from "express"
 import {Server } from "http"
 import {Server as IOServer} from "socket.io"
-import {sqliteOptions} from "./config/sqliteOpt.js"
 import chatSchema from "./config/chatSchema.js"
 import {normalize} from "normalizr"
 import MongoStore from "connect-mongo"
@@ -54,13 +53,12 @@ if (DOT_ENV.MODE === 'CLUSTER' && cluster.isPrimary) {
 
   const Users = new Usuarios()
   const Messages = new Mensajes()
-  const Products = new DBCliente(sqliteOptions, "productos")
-  Products.crearTablaProductos()
+  const Products = new Productos()
 
   // DDBB END
   // SERVER START
 
-  const PUERTO = process.env.PORT || 8080
+  const PUERTO = process.env.PORT || DOT_ENV.PORT
   const app = express()
   const httpServer = new Server(app)
   const io = new IOServer(httpServer)
