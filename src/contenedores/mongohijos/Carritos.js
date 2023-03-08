@@ -1,6 +1,6 @@
 import MongoContainer from "../MongoContainer.js"
 import * as model from "../models/carritosModel.js"
-import * as logger from "../../Logger.js"
+import * as Logger from "../../Logger.js"
 
 
 export default class Carritos extends MongoContainer{
@@ -18,7 +18,7 @@ export default class Carritos extends MongoContainer{
       await this.disconnect()
       return carrito._id
     } catch (error) {
-      logger.logError.error(error)
+      Logger.logError.error(error)
     }
   }
 
@@ -32,7 +32,7 @@ export default class Carritos extends MongoContainer{
       await this.disconnect()
       return carritosId
     } catch (error) {
-      logger.logError.error(error)
+      Logger.logError.error(error)
     }
   }
 
@@ -45,7 +45,7 @@ export default class Carritos extends MongoContainer{
       await this.disconnect()
       return carrito
     } catch (error) {
-      logger.logError.error(error)
+      Logger.logError.error(error)
     }
   }
 
@@ -58,7 +58,7 @@ export default class Carritos extends MongoContainer{
       await this.disconnect()
       return carritoId
     } catch (error) {
-      logger.logError.error(error)
+      Logger.logError.error(error)
     }
   }
   
@@ -78,7 +78,7 @@ export default class Carritos extends MongoContainer{
       await this.disconnect()
       return res
     } catch (error) {
-      logger.logError.error(error)
+      Logger.logError.error(error)
     }
   }
 
@@ -103,7 +103,7 @@ export default class Carritos extends MongoContainer{
       await this.disconnect()
       return res
     } catch (error) {
-      logger.logError.error(error)
+      Logger.logError.error(error)
     }
   }
 
@@ -117,7 +117,7 @@ export default class Carritos extends MongoContainer{
       await this.disconnect()
       return res
     } catch (error) {
-      logger.logError.error(error)
+      Logger.logError.error(error)
     }
   }
 }

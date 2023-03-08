@@ -10,7 +10,7 @@
     <h1> Mi Carrito de compras</h1>
 
     <% if (carritoExists) { %> 
-      <a href="/pedidoCarrito"><button>Comprar productos</button></a>
+      <a href="/pedidoCarrito/<%-user.email%>/<%=productosId%>"><button>Comprar producto/s</button></a>
 
       <div class="table-responsive px-4">
         <table class="table table-dark">

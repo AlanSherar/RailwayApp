@@ -1,8 +1,10 @@
 import bCrypt from "bcrypt"
 import {Strategy as LocalStrategy} from "passport-local"
 import * as db from "./DBs.js"
+import * as Logger from "./Logger.js"
 
-const Login = new LocalStrategy( async (username, password, next) => {
+const Login = new LocalStrategy(
+  async (username, password, next) => {
   try {
     const user = await db.Users.getByEmail(username)
 
@@ -16,7 +18,7 @@ const Login = new LocalStrategy( async (username, password, next) => {
 
     return next(null, user)
   } catch (error) {
-    logger.logError.error(error)
+    Logger.logError.error(error)
   }
   })
   
@@ -59,7 +61,7 @@ const Signin =  new LocalStrategy( {
   await db.Users.save(newUser)
   return next(null, newUser)  
     } catch (error) {
-      logger.logError.error(error)
+      Logger.logError.error(error)
     }
     
   })
@@ -74,7 +76,7 @@ const Deserializar = async (email, next) => {
 
     next(null, acc)
   } catch (error) {
-    logger.logError.error(error)
+    Logger.logError.error(error)
     
   }
 

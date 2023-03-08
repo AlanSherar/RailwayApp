@@ -76,7 +76,7 @@ if (DOT_ENV.MODE === 'CLUSTER' && cluster.isPrimary){
   passport.deserializeUser( Passport.Deserializar )
   
     // App Requests // Router
-  // login
+  // login  
   app.get("/login", Routes.getLogin)
   app.post("/login", passport.authenticate("login", {failureRedirect: "/failLogin", successRedirect: "/" }))
   app.get("/failLogin", Routes.getFailLogin)
@@ -92,7 +92,7 @@ if (DOT_ENV.MODE === 'CLUSTER' && cluster.isPrimary){
   // "/"
   app.get("/", checkAuthentication, Routes.getIndex)
   // productos
-  app.get("/productos", checkAuthentication, Routes.getProductos)
+  app.get("/productos/:filtros?", checkAuthentication, Routes.getProductos)
   app.post("/productos", Routes.postProductos, Routes.postProductos)
   // carrito
   app.get("/carrito", checkAuthentication, Routes.getCarrito)
@@ -103,7 +103,7 @@ if (DOT_ENV.MODE === 'CLUSTER' && cluster.isPrimary){
   // avatarChange
   app.post("/avatarChange", checkAuthentication, Multer.upload.single("newAvatar"), Routes.FileCheck, Routes.postAvatarChange)
   // pedidoCarrito
-  app.get("/pedidoCarrito", checkAuthentication, Routes.getPedidoCarrito)
+  app.get("/pedidoCarrito/:email/:productosId", checkAuthentication, Routes.getPedidoCarrito)
   // Server ON
   httpServer.listen(PUERTO, () => {
     Logger.logConsola.info(`Server iniciado desde el puerto ${PUERTO} en modo ${DOT_ENV.MODE}`)

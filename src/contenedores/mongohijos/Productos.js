@@ -17,7 +17,7 @@ export default class productos extends MongoContainer{
 
       return productos
     } catch (error) {
-      logger.logError.error(error)
+      Logger.logError.error(error)
     }
   }
 
@@ -34,6 +34,27 @@ export default class productos extends MongoContainer{
     }
   }
 
+  async getByTags(tags){
+    try {
+      await this.connect()
+
+      let allProductos = await model.productos.find({},{__v:0})
+      const productos = []
+
+      for (let i = 0; i < allProductos.length; i++) {
+        if (allProductos[i].tags.includes()) {
+          
+        }
+        
+      }
+
+      await this.disconnect()
+
+      return productos
+    } catch (error) {
+      logger.logError.error(error)
+    }
+  }
   //POST
   async save(producto){
     try {

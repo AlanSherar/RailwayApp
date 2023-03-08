@@ -1,0 +1,5 @@
+[2023-03-08T19:24:14.621] [ERROR] error - TypeError: Cannot read properties of null (reading 'body')
+    at postSignin (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/RailwayEntrega/src/Routes.js:17:30)
+    at Strategy.strategy.success (E:\CODER-HOUSE\Cursos\Programacion-Backend\RailwayEntrega\node_modules\passport\lib\middleware\authenticate.js:222:18)
+    at verified (E:\CODER-HOUSE\Cursos\Programacion-Backend\RailwayEntrega\node_modules\passport-local\lib\strategy.js:83:10)
+    at Strategy._verify (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/RailwayEntrega/src/Passport.js:62:10)

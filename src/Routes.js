@@ -51,16 +51,21 @@ function getIndex(req, res) {
 // /productos
 
 async function getProductos(req, res) {
-  try {
-  const productos = await db.Products.getAll()
-
-  Logger.logConsola.info("falta catch de promesa getProductos")
-  
+  const {filtros} = req.params
   let listExists = false
-  if (productos.length > 0) {
-    listExists = true
-  }
-  res.render("productos", {user: req.user, productos: productos, listExists})
+  const productos = []
+  try {
+    if(!filtros) {
+      productos = await db.Products.getAll()
+    } else {
+      const tags = filtros.split("-")
+      productos = await db.Products.getByTags(tags)
+    }
+
+    if (productos.length > 0) {
+      listExists = true
+    }
+    res.render("productos", {user: req.user, productos: productos, listExists})
   } catch (error) {
     Logger.logError.error(error)
   }
@@ -116,7 +121,7 @@ async function getCarrito(req, res) {
       miCarrito.push(await db.Products.getById(productosId[i]))
     }
 
-    res.render("carrito", {user: user, carritoId, miCarrito, carritoExists})
+    res.render("carrito", {user: user, carritoId, miCarrito, productosId, carritoExists})
 
   } catch (error) {
     Logger.logError.error(error)
@@ -159,7 +164,13 @@ async function getDeleteCarritoProd(req, res) {
 async function getPedidoCarrito(req, res){
   try {
     const {referer} = req.headers
-
+    const {email, productosId} = req.params
+    const productos = productosId.split(",")
+    const user = await db.Users.getByEmail(email)
+    // enviar email al admin pedido de compra
+    Logger.logConsola.info("\n Comprador user: " + user + "\n Carrito: " + productos)
+    // enviar wpp al usuario pedido de compra
+    Logger.logConsola.info("Su pedido de compra ha sido recibido y esta en proceso. Le agradecemos por su confianza y paciencia")
     return res.redirect(referer)
   } catch (error) {
     Logger.logError.error(error)
