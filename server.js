@@ -8,6 +8,7 @@ import session from "express-session"
 import dotenv from "dotenv"
 import compression from "compression"
 import {MONGO_OPTIONS} from "./config/Options.js"
+import {MONGO_URL} from "./config/mongoUrl.js"
 import { DOT_ENV } from "./src/Dot_Env_Input.js"
 import * as Faker from "./src/Faker.js"
 import * as Logger from "./src/Logger.js"
@@ -52,7 +53,7 @@ if (DOT_ENV.MODE === 'CLUSTER' && cluster.isPrimary){
   app.use(compression())
   app.use(session({
     store: MongoStore.create({
-      mongoUrl: process.env.MONGO_URL,
+      mongoUrl: MONGO_URL,
       mongoOptions: MONGO_OPTIONS
     }),
     secret: "sSsecreto",
