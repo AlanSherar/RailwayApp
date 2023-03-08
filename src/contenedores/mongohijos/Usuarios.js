@@ -16,8 +16,8 @@ export default class Usuarios extends MongoContainer{
       await this.disconnect()
 
       return res
-    } catch (err) {
-      logger.logError.error(err)
+    } catch (error) {
+      logger.logError.error(error)
     }
   }
 
@@ -31,7 +31,7 @@ export default class Usuarios extends MongoContainer{
 
       return res
     } catch (error) {
-      logger.logError.error(err)
+      logger.logError.error(error)
     }
   }
 
@@ -43,8 +43,8 @@ export default class Usuarios extends MongoContainer{
 
       await this.disconnect()
       return res
-    } catch (err) {
-      logger.logError.error(err)
+    } catch (error) {
+      logger.logError.error(error)
     }
   }
 
@@ -74,7 +74,7 @@ export default class Usuarios extends MongoContainer{
 
       return res
     } catch (error) {
-      logger.logError.error(err)
+      logger.logError.error(error)
     }
   }
 
@@ -89,7 +89,7 @@ export default class Usuarios extends MongoContainer{
 
       return res
     } catch (error) {
-      logger.logError.error(err)
+      logger.logError.error(error)
     }
   }
 }

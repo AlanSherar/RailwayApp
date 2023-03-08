@@ -17,7 +17,7 @@ export default class productos extends MongoContainer{
 
       return productos
     } catch (error) {
-      console.log(error)
+      logger.logError.error(error)
     }
   }
 

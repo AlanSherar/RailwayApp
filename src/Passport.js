@@ -2,27 +2,32 @@ import bCrypt from "bcrypt"
 import {Strategy as LocalStrategy} from "passport-local"
 import * as db from "./DBs.js"
 
-const Login = new LocalStrategy( async (username, password, done) => {
+const Login = new LocalStrategy( async (username, password, next) => {
+  try {
     const user = await db.Users.getByEmail(username)
 
     if(!user){
-      return done(null, false)
+      return next(null, false)
     }
 
     if(!isValidPassword(user, password)){
-      return done(null, false)
+      return next(null, false)
     }
 
-    return done(null, user)
+    return next(null, user)
+  } catch (error) {
+    logger.logError.error(error)
+  }
   })
   
 const Signin =  new LocalStrategy( {
   passReqToCallback: true}, 
-  async (req, username, password, done) => {
+  async (req, username, password, next) => {
+    try {
     const user = await db.Users.getByEmail(req.body.email)
 
     if(user){
-      return done(null, false)
+      return next(null, false)
     }
     const { email, apellido, edad , direccion, phone} = req.body
     const { file } = req
@@ -38,7 +43,7 @@ const Signin =  new LocalStrategy( {
         avatar: file.filename
       }
       await db.Users.save(newUser)
-      return done(null, newUser)
+      return next(null, newUser)
   }
 
   const newUser = {
@@ -52,17 +57,27 @@ const Signin =  new LocalStrategy( {
     avatar: "sinFoto.jpg"
   }
   await db.Users.save(newUser)
-  return done(null, newUser)
+  return next(null, newUser)  
+    } catch (error) {
+      logger.logError.error(error)
+    }
+    
   })
 
-const Serializar = (username, done) => {
-  done(null, username.email)
+const Serializar = (username, next) => {
+  next(null, username.email)
 }
 
-const Deserializar = async (email, done) => {
-  const acc = await db.Users.getByEmail(email)
-  
-  done(null, acc)
+const Deserializar = async (email, next) => {
+  try {
+    const acc = await db.Users.getByEmail(email)
+
+    next(null, acc)
+  } catch (error) {
+    logger.logError.error(error)
+    
+  }
+
 }
 
 // functions
@@ -78,7 +93,6 @@ function createHash(password) {
     null
   )
 }
-
 
 export {
   Login,

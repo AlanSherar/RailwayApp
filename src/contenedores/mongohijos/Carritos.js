@@ -18,11 +18,10 @@ export default class Carritos extends MongoContainer{
       await this.disconnect()
       return carrito._id
     } catch (error) {
-      console.log(error)
+      logger.logError.error(error)
     }
   }
 
-  
   //GET
   async getAll(){
     try {
@@ -33,7 +32,7 @@ export default class Carritos extends MongoContainer{
       await this.disconnect()
       return carritosId
     } catch (error) {
-      console.log(error)
+      logger.logError.error(error)
     }
   }
 
@@ -46,7 +45,7 @@ export default class Carritos extends MongoContainer{
       await this.disconnect()
       return carrito
     } catch (error) {
-      console.log(error)
+      logger.logError.error(error)
     }
   }
 
@@ -59,7 +58,7 @@ export default class Carritos extends MongoContainer{
       await this.disconnect()
       return carritoId
     } catch (error) {
-      console.log(error)
+      logger.logError.error(error)
     }
   }
   
@@ -79,7 +78,7 @@ export default class Carritos extends MongoContainer{
       await this.disconnect()
       return res
     } catch (error) {
-      console.log(error)
+      logger.logError.error(error)
     }
   }
 
@@ -118,7 +117,7 @@ export default class Carritos extends MongoContainer{
       await this.disconnect()
       return res
     } catch (error) {
-      console.log(error)
+      logger.logError.error(error)
     }
   }
 }
