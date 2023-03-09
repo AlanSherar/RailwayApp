@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import {MONGO_OPTIONS} from "../config/Options.js"
+import {MONGO_OPTIONS} from "../config/mongoOptions.js"
 import {MONGO_URL} from "../config/mongoUrl.js"
 import * as logger from "../Logger.js"
 

@@ -1,6 +1,8 @@
 import * as Logger from "./Logger.js"
 import * as db from "./DBs.js"
 import * as Faker from "./Faker.js"
+import * as Mailer from "./Nodemailer.js"
+import mailerEmail from "./config/nodemailerEmail.js"
 
 // /signin
 
@@ -64,7 +66,7 @@ async function getProductos(req, res) {
     listExists = true
 
     if(filtros) {
-      const tags = filtros.split("&")
+      const tags = filtros.split("-")
       productos = await db.Products.getByTags(tags)
     }
     
@@ -171,9 +173,23 @@ async function getPedidoCarrito(req, res){
     const productos = productosId.split(",")
     const user = await db.Users.getByEmail(email)
     // enviar email al admin pedido de compra
-    Logger.logConsola.info("\n Comprador user: " + user + "\n Carrito: " + productos)
+/*     Logger.logConsola.info("\n Comprador user: " + user + "\n Carrito: " + productos) */
+    
+    const mailOptions = {
+      from : "Coderhouse EcommerceApp",
+      to : mailerEmail,
+      subject: `Nuevo pedido de compra de ${user.nombre}, correo : ${user.email}`,
+      html: `${productos}
+      `,  
+    }
+    Mailer.ecommerceGmail.sendMail(mailOptions)
+
+    // enviar wpp al admin pedido de compra
+
+    Logger.logConsola.info("Administrador: " + `Nuevo pedido de compra de ${user.nombre} ${user.apellido}, correo : ${user.email}`)
+    
     // enviar wpp al usuario pedido de compra
-    Logger.logConsola.info("Su pedido de compra ha sido recibido y esta en proceso. Le agradecemos por su confianza y paciencia")
+    Logger.logConsola.info("Comprador: " + "Su pedido de compra ha sido recibido y esta en proceso. Le agradecemos por su confianza y paciencia")
     return res.redirect(referer)
   } catch (error) {
     Logger.logError.error(error)

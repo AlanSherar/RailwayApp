@@ -1,6 +1,8 @@
 import MongoContainer from "../MongoContainer.js"
 import * as model from "../models/usuariosModel.js"
 import * as Logger from "../../Logger.js"
+import * as Mailer from "../../Nodemailer.js"
+import mailerEmail from "../../config/nodemailerEmail.js"
 
 export default class Usuarios extends MongoContainer{
   constructor(){
@@ -56,8 +58,14 @@ export default class Usuarios extends MongoContainer{
       const nuevoUser = await model.usuarios.create(user)
 
       // enviar mail al admin registro nuevo
-      Logger.logConsola.info("Nuevo registro: " + nuevoUser)
-      
+      const mailOptions = {
+        from : "Coderhouse EcommerceApp",
+        to : mailerEmail,
+        subject: "Nuevo registro",
+        html: `${nuevoUser}`,  
+      }
+      Mailer.ecommerceGmail.sendMail(mailOptions)
+
       await this.disconnect()
 
       return nuevoUser
