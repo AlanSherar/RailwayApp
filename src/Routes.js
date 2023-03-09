@@ -51,21 +51,24 @@ function getIndex(req, res) {
 // /productos
 
 async function getProductos(req, res) {
-  const {filtros} = req.params
-  let listExists = false
-  const productos = []
   try {
-    if(!filtros) {
-      productos = await db.Products.getAll()
-    } else {
-      const tags = filtros.split("-")
-      productos = await db.Products.getByTags(tags)
+    const tagsFiltrables = Faker.tagsFiltrables.join(" - ")
+    const {filtros} = req.params
+    let listExists = false
+    let productos = await db.Products.getAll()
+    
+    if(productos.length <= 0){
+      return res.render("productos", {user: req.user, listExists})
     }
 
-    if (productos.length > 0) {
-      listExists = true
+    listExists = true
+
+    if(filtros) {
+      const tags = filtros.split("&")
+      productos = await db.Products.getByTags(tags)
     }
-    res.render("productos", {user: req.user, productos: productos, listExists})
+    
+    res.render("productos", {user: req.user, tagsFiltrables, productos: productos, listExists})
   } catch (error) {
     Logger.logError.error(error)
   }

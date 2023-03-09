@@ -1,5 +1,223 @@
-[2023-03-08T19:24:14.621] [ERROR] error - TypeError: Cannot read properties of null (reading 'body')
-    at postSignin (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/RailwayEntrega/src/Routes.js:17:30)
-    at Strategy.strategy.success (E:\CODER-HOUSE\Cursos\Programacion-Backend\RailwayEntrega\node_modules\passport\lib\middleware\authenticate.js:222:18)
-    at verified (E:\CODER-HOUSE\Cursos\Programacion-Backend\RailwayEntrega\node_modules\passport-local\lib\strategy.js:83:10)
-    at Strategy._verify (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/RailwayEntrega/src/Passport.js:62:10)
+[2023-03-08T21:06:52.338] [ERROR] error - MongoBulkWriteError: Cannot use a session that has ended
+    at resultHandler (E:\CODER-HOUSE\Cursos\Programacion-Backend\RailwayEntrega\node_modules\mongodb\lib\bulk\common.js:395:29)
+    at E:\CODER-HOUSE\Cursos\Programacion-Backend\RailwayEntrega\node_modules\mongodb\lib\utils.js:349:66
+    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+  writeErrors: [],
+  result: BulkWriteResult {
+    result: {
+      ok: 1,
+      writeErrors: [],
+      writeConcernErrors: [],
+      insertedIds: [Array],
+      nInserted: 0,
+      nUpserted: 0,
+      nMatched: 0,
+      nModified: 0,
+      nRemoved: 0,
+      upserted: []
+    }
+  },
+  insertedDocs: [
+    {
+      titulo: 'Small Steel Sausages',
+      precio: 4513,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069ce6"),
+      __v: 0
+    },
+    {
+      titulo: 'Handmade Bronze Keyboard',
+      precio: 3364,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069ce7"),
+      __v: 0
+    },
+    {
+      titulo: 'Electronic Rubber Pizza',
+      precio: 4364,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069ce8"),
+      __v: 0
+    },
+    {
+      titulo: 'Electronic Fresh Table',
+      precio: 3693,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069ce9"),
+      __v: 0
+    },
+    {
+      titulo: 'Oriental Cotton Tuna',
+      precio: 8022,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cea"),
+      __v: 0
+    },
+    {
+      titulo: 'Gorgeous Steel Towels',
+      precio: 5831,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069ceb"),
+      __v: 0
+    },
+    {
+      titulo: 'Fantastic Bronze Bacon',
+      precio: 8981,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cec"),
+      __v: 0
+    },
+    {
+      titulo: 'Luxurious Concrete Computer',
+      precio: 4747,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069ced"),
+      __v: 0
+    },
+    {
+      titulo: 'Elegant Rubber Sausages',
+      precio: 2314,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cee"),
+      __v: 0
+    },
+    {
+      titulo: 'Practical Concrete Keyboard',
+      precio: 2683,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cef"),
+      __v: 0
+    },
+    {
+      titulo: 'Elegant Concrete Bike',
+      precio: 8383,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cf0"),
+      __v: 0
+    },
+    {
+      titulo: 'Ergonomic Frozen Chair',
+      precio: 2006,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cf1"),
+      __v: 0
+    },
+    {
+      titulo: 'Practical Soft Keyboard',
+      precio: 5189,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cf2"),
+      __v: 0
+    },
+    {
+      titulo: 'Modern Frozen Chicken',
+      precio: 6528,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cf3"),
+      __v: 0
+    },
+    {
+      titulo: 'Incredible Metal Gloves',
+      precio: 4471,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cf4"),
+      __v: 0
+    },
+    {
+      titulo: 'Generic Granite Towels',
+      precio: 2258,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cf5"),
+      __v: 0
+    },
+    {
+      titulo: 'Incredible Rubber Salad',
+      precio: 3995,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cf6"),
+      __v: 0
+    },
+    {
+      titulo: 'Recycled Rubber Hat',
+      precio: 7995,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cf7"),
+      __v: 0
+    },
+    {
+      titulo: 'Gorgeous Bronze Chicken',
+      precio: 9487,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cf8"),
+      __v: 0
+    },
+    {
+      titulo: 'Small Plastic Fish',
+      precio: 6214,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cf9"),
+      __v: 0
+    },
+    {
+      titulo: 'Practical Concrete Shoes',
+      precio: 7578,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cfa"),
+      __v: 0
+    },
+    {
+      titulo: 'Ergonomic Wooden Chair',
+      precio: 6630,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cfb"),
+      __v: 0
+    },
+    {
+      titulo: 'Ergonomic Fresh Ball',
+      precio: 2896,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cfc"),
+      __v: 0
+    },
+    {
+      titulo: 'Tasty Rubber Hat',
+      precio: 2343,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cfd"),
+      __v: 0
+    },
+    {
+      titulo: 'Practical Bronze Shirt',
+      precio: 1736,
+      thumbnail: 'https://loremflickr.com/640/480',
+      tags: [Array],
+      _id: new ObjectId("6409231c58ed76a986069cfe"),
+      __v: 0
+    }
+  ],
+  [Symbol(errorLabels)]: Set(0) {}
+}

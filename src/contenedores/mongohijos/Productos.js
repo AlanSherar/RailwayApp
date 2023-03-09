@@ -13,8 +13,8 @@ export default class productos extends MongoContainer{
       await this.connect()
 
       let productos = await model.productos.find({},{__v:0})
+      
       await this.disconnect()
-
       return productos
     } catch (error) {
       Logger.logError.error(error)
@@ -39,20 +39,14 @@ export default class productos extends MongoContainer{
       await this.connect()
 
       let allProductos = await model.productos.find({},{__v:0})
-      const productos = []
 
-      for (let i = 0; i < allProductos.length; i++) {
-        if (allProductos[i].tags.includes()) {
-          
-        }
-        
-      }
+      const productosFiltrados = this.filtrarProductos(allProductos, tags)
 
       await this.disconnect()
 
-      return productos
+      return productosFiltrados
     } catch (error) {
-      logger.logError.error(error)
+      Logger.logError.error(error)
     }
   }
   //POST
@@ -126,4 +120,40 @@ export default class productos extends MongoContainer{
       Logger.logError.error(error)
     }
   }
+
+  // AUXILIARES
+
+  filtrarProductos(allProductos, tags){
+
+    let productosFiltrados = []
+    
+    for (let i = 0; i < allProductos.length; i++) {
+      const prodTags = allProductos[i].tags
+      if (!this.isElementoInArreglo(allProductos[i], productosFiltrados)) {
+        let j = 0
+        while (j < prodTags.length) {
+          if (this.isElementoInArreglo(prodTags[j], tags)) {
+            productosFiltrados.push(allProductos[i])
+          }
+          j++
+        }
+      }
+      i++
+    }
+
+    return productosFiltrados
+  }
+
+  isElementoInArreglo(element, arreglo){
+
+    let i = 0
+    while (i < arreglo.length) {
+      if (arreglo[i] == element) {
+        return true
+      }
+      i++
+    }
+    return false
+  }
+
 }
