@@ -103,15 +103,7 @@ async function postProductos(req, res) {
 
 async function getCarrito(req, res) {
   try {
-    const numero = req.user.numero
-    Logger.logConsola.info(numero)
-      TwilioWpp.create({
-        from:"whatsapp:+14155238886",
-        body:"Bienvenido/a a mi AlanSitio",
-        to:`whatsapp:${numero}`
-      })
-      // 
-      
+    
     const dueñoId = req.user.email
     const {user} = req
     let carritoExists = false
