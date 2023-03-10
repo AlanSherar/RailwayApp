@@ -5,7 +5,6 @@ import {Server as IOServer} from "socket.io"
 import MongoStore from "connect-mongo"
 import passport from "passport"
 import session from "express-session"
-import dotenv from "dotenv"
 import compression from "compression"
 import {MONGO_OPTIONS} from "./src/config/mongoOptions.js"
 import {MONGO_URL} from "./src/config/mongoUrl.js"
@@ -36,8 +35,6 @@ if (DOT_ENV.MODE === 'CLUSTER' && cluster.isPrimary){
     cluster.fork()
   })
 } else {
-
-  dotenv.config({path:"E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/config/.env"})
   
   const PUERTO = process.env.PORT || DOT_ENV.PORT
 
