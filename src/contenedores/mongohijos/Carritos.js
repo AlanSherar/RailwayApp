@@ -89,7 +89,12 @@ export default class Carritos extends MongoContainer{
       const carrito = await model.carritos.findById(carritoId)
 
       const carritoProdIds = carrito.productos
-
+      if(carritoProdIds.length <= 1){
+        let res = await this.deleteById(carritoId)
+        
+      await this.disconnect()
+        return res
+      }
       const sinProdId = []
 
       for (let i = 0; i < carritoProdIds.length; i++) {
